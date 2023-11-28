@@ -35,7 +35,9 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken())
 
-    const socket = io("http://localhost:5000")
+    // const socket = io("http://localhost:5000")
+    const socket = io("https://dating-api-n24s.onrender.com:10000")
+
     dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close()
   }, [dispatch])
@@ -46,7 +48,7 @@ function App() {
       dispatch(getSuggestions(auth.token))
       dispatch(getUser({ id: auth.user._id, auth }))
       dispatch(getSuggestionsMatching(auth.token))
-      dispatch(getDatingTimeline({ user: auth.user._id, matchingId:auth.user.matching?._id ,token: auth.token }))
+      dispatch(getDatingTimeline({ user: auth.user._id, matchingId: auth.user.matching?._id, token: auth.token }))
       dispatch(getNotifies(auth.token))
     }
     // eslint-disable-next-line
