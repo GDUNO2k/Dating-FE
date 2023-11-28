@@ -46,7 +46,7 @@ function App() {
       dispatch(getSuggestions(auth.token))
       dispatch(getUser({ id: auth.user._id, auth }))
       dispatch(getSuggestionsMatching(auth.token))
-      dispatch(getDatingTimeline({ user: auth.user._id, matchingId:auth.user.matching?._id ,token: auth.token }))
+      dispatch(getDatingTimeline({ user: auth.user._id, matchingId: auth.user.matching?._id, token: auth.token }))
       dispatch(getNotifies(auth.token))
     }
     // eslint-disable-next-line
