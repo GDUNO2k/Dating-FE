@@ -27,6 +27,7 @@ import { getNotifies } from './redux/actions/notifyAction'
 import CallModal from './components/message/CallModal'
 import Peer from 'peerjs'
 import { getUser } from './redux/actions/profileAction'
+import { PRODUCT_API } from './utils/config'
 
 function App() {
   const { auth, status, modal, call } = useSelector(state => state)
@@ -35,7 +36,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshToken())
 
-    const socket = io("https://datingbe.onrender.com")
+    const socket = io(PRODUCT_API)
     dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close()
   }, [dispatch])
